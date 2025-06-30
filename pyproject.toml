@@ -19,7 +19,6 @@ dependencies = [
   "tensorboard",
   "soundfile",
   "matplotlib",
-  "pesq",
   "auraloss",
   "tqdm",
   "nnAudio",
