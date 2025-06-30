@@ -38,6 +38,7 @@ py-modules = [
   "activations",
   "env",
   "meldataset",
+  "alias_free_activation",
 ]
 
 [tool.setuptools.packages.find]
