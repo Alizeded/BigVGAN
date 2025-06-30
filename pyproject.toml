@@ -24,6 +24,7 @@ dependencies = [
     "numpy",
     "scipy",
     "librosa",
+    "numba==0.61.2",
     "huggingface_hub",
 ]
 
