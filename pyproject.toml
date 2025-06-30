@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bigvgan"
+version = "0.0.1"
+description = "NVIDIA BigVGAN vocoder – packaged for pip/uv install"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "Apache-2.0"}
+authors = [{name = "NVIDIA & Lijun Wang"}]
+
+dependencies = [
+  "torch",
+  "numpy",
+  "librosa>=0.8.1",
+  "scipy",
+  "tensorboard",
+  "soundfile",
+  "matplotlib",
+  "pesq",
+  "auraloss",
+  "tqdm",
+  "nnAudio",
+  "ninja",
+  "huggingface_hub>=0.23.4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff", "black"]
+
+[tool.setuptools]
+py-modules = [
+  "bigvgan",
+  "utils",
+  "activations",
+  "env",
+  "meldataset",
+]
+packages = ["alias_free_torch"]
