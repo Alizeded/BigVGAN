@@ -38,3 +38,5 @@ py-modules = [
   "env",
   "meldataset",
 ]
+
+packages = ["alias_free_activation"]
