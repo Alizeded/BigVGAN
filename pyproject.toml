@@ -15,7 +15,6 @@ description = "NVIDIA BigVGAN vocoder – packaged for pip/uv install"
 authors = [
     {name = "Lijun Wang", email = "lijun.wang@jaist.ac.jp"},
 ]
-license = {text = "MIT"}
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
