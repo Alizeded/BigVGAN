@@ -1,45 +1,60 @@
 [build-system]
-requires = ["setuptools>=61", "wheel"]
+requires = [
+    "setuptools>=61.0",
+    "wheel",
+    "torch>=2.0.0",
+    "ninja",
+    "pybind11>=2.10.0",
+]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "bigvgan"
-version = "0.0.1"
+version = "0.1.0"
 description = "NVIDIA BigVGAN vocoder – packaged for pip/uv install"
+authors = [
+    {name = "Lijun Wang", email = "lijun.wang@jaist.ac.jp"},
+]
+license = {text = "MIT"}
 readme = "README.md"
-requires-python = ">=3.9"
-license = "Apache-2.0"
-authors = [{name = "NVIDIA & Lijun Wang"}]
-
+requires-python = ">=3.11"
 dependencies = [
-  "torch",
-  "numpy",
-  "librosa>=0.8.1",
-  "scipy",
-  "pesq",
-  "tensorboard",
-  "soundfile",
-  "matplotlib",
-  "auraloss",
-  "tqdm",
-  "nnAudio",
-  "ninja",
-  "huggingface_hub>=0.23.4",
+    "torch>=2.0.0",
+    "torchaudio>=2.0.0",
+    "numpy",
+    "scipy",
+    "librosa",
+    "huggingface_hub",
 ]
 
 [project.optional-dependencies]
-dev = ["pytest", "ruff"]
-
-[tool.setuptools]
-py-modules = [
-  "bigvgan",
-  "utils",
-  "activations",
-  "env",
-  "meldataset",
+cuda = [
+    "ninja",
+    "pybind11>=2.10.0",
+]
+dev = [
+    "pytest",
+    "black",
+    "isort",
+    "flake8",
 ]
 
-[tool.setuptools.packages.find]
-where    = ["."]
-include  = ["alias_free_activation*", "alias_free_torch*", "*"]  # * 保证其余子包也收录
-exclude  = ["tests*"]
+[tool.setuptools]
+packages = [
+    "bigvgan",
+    "alias_free_activation",
+    "alias_free_activation.torch",
+    "alias_free_activation.cuda",
+]
+
+[tool.setuptools.package-data]
+"alias_free_activation.cuda" = [
+    "*.cpp",
+    "*.cu",
+    "*.cuh",
+    "*.h",
+    "*.hpp",
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "bigvgan.__version__"}
